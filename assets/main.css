@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  font-family: Montserrat;
+}
+button {
+  cursor: pointer;
+}
+/* .container {
+  max-width: 1020px;
+  margin: 0 auto;
+} */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+footer {
+  float: left;
+  width: 100%;
+  margin: 120px 0 0 0;
+}
+.meny-cabinet {
+  padding: 0 0 0 100px;
+}
