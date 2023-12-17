@@ -2,6 +2,7 @@
 const { data: posts, error, refresh } = await useFetch("/api/posts/");
 const message = ref("");
 const text = ref("");
+const img = ref("");
 const status = ref(false);
 const showdiv = ref(0);
 const body = ref({
@@ -13,10 +14,9 @@ const dell = ref({
 const update = ref({
   title: "",
 });
-const addpost = async (item) => {
-  body.value = { title: item };
-const addpost = async (item, st, tx) => {
-  body.value = { title: item, status: st, text: tx };
+
+const addpost = async (item, st, tx,pic) => {
+  body.value = { title: item, status: st, text: tx,img:pic };
 
   const { data: responseData } = await useFetch("/api/add/addpost/", {
     method: "POST",
@@ -31,6 +31,7 @@ const addpost = async (item, st, tx) => {
 
     status.value = "";
     text.value = "";
+    img.value = "";
   }
 };
 const deletepost = async (id) => {
@@ -46,8 +47,8 @@ const deletepost = async (id) => {
     refresh();
   }
 };
-const updatepost = async (id, title) => {
-  update.value = { title: title, _id: id };
+const updatepost = async (id, title,img,text) => {
+  update.value = { title: title, _id: id,img:img,text:text };
   const { data: responseData } = await useFetch("/api/update/updatepost/", {
     method: "POST",
     headers: {
@@ -73,12 +74,15 @@ const showUpdate = (idx) => {
     <div class="columns">
       <div class="column is-8">
         <h1>Mongo</h1>
-        <input v-model="message" placeholder="edit me" />
-        <input type="checkbox" v-model="status" placeholder="edit me" />
-        <button @click="addpost(message)">save</button>
+        <input v-model="message" placeholder="title" />
+        <input v-model="img" placeholder="img" />
+        <input type="checkbox" v-model="status" placeholder="text" />
         <textarea v-model="text" placeholder="add multiple lines"></textarea>
-        <button @click="addpost(message, status, text)">save</button>
+        <button @click="addpost(message, status, text , img)">save</button>
         <div class="block" v-for="item in posts" :key="item._id">
+          <p>
+            {{ item.img }}
+          </p>
           <p>
             {{ item.title }}
           </p>
@@ -91,7 +95,9 @@ const showUpdate = (idx) => {
             <div v-show="item._id == showdiv">
               {{ item._id }}
               <input v-model="item.title" placeholder="edit me" />
-              <button @click="updatepost(item._id, item.title)">save</button>
+              <input v-model="item.img" placeholder="img" />
+              <textarea v-model="item.text" placeholder="add multiple lines"></textarea>
+              <button @click="updatepost(item._id, item.title, item.img,item.text)">save</button>
             </div>
           </transition>
         </div>

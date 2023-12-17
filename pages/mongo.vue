@@ -3,12 +3,22 @@ const { data: posts, error, refresh } = await useFetch("/api/posts/");
 </script>
 <template>
   <div class="container">
-    <h1>In</h1>
+    <div class="content">
+    <h1>Post</h1>
     <div class="block" v-for="item in posts" :key="item._id">
-      <p>
-        {{ item.title }}
-      </p>
+      <nuxt-link :to="`/post/`+item._id">
+        <div class="block-img">
+              <img :src="item.img"/>
+            </div>
+            <p>
+              {{ item.title }}
+            </p>
+            <p>
+              {{ item.text }}
+            </p>
+      </nuxt-link>
     </div>
+  </div>
   </div>
 </template>
 
@@ -27,5 +37,18 @@ button {
   border-radius: 5px;
   padding: 20px;
   background: #f9f9f9;
+}
+.block-img{
+  float: left;
+  width: 250px;
+  height: 150px;
+  margin: 0 20px 0 0;
+}
+.block-img img{
+  width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+    object-fit: cover;
+    border-radius: 12px;
 }
 </style>
