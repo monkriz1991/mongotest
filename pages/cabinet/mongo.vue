@@ -12,8 +12,8 @@ const dell = ref({
 const update = ref({
   title: "",
 });
-const addpost = async (item, st) => {
-  body.value = { title: item, status: st };
+const addpost = async (item) => {
+  body.value = { title: item };
 
   const { data: responseData } = await useFetch("/api/add/addpost/", {
     method: "POST",
@@ -25,7 +25,7 @@ const addpost = async (item, st) => {
   if (responseData) {
     refresh();
     message.value = "";
-    status.value = "";
+
   }
 };
 const deletepost = async (id) => {
@@ -70,7 +70,7 @@ const showUpdate = (idx) => {
         <h1>Mongo</h1>
         <input v-model="message" placeholder="edit me" />
         <input type="checkbox" v-model="status" placeholder="edit me" />
-        <button @click="addpost(message, status)">save</button>
+        <button @click="addpost(message)">save</button>
         <div class="block" v-for="item in posts" :key="item._id">
           <p>
             {{ item.title }}
