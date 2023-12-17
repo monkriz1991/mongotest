@@ -9,6 +9,7 @@ const postScema = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
+  text: { type: String, require: true, trim: true },
 });
 
 const PostModel = mongoose.model("posttests", postScema);

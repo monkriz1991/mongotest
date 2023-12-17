@@ -1,6 +1,7 @@
 <script setup>
 const { data: posts, error, refresh } = await useFetch("/api/posts/");
 const message = ref("");
+const text = ref("");
 const status = ref(false);
 const showdiv = ref(0);
 const body = ref({
@@ -12,8 +13,8 @@ const dell = ref({
 const update = ref({
   title: "",
 });
-const addpost = async (item, st) => {
-  body.value = { title: item, status: st };
+const addpost = async (item, st, tx) => {
+  body.value = { title: item, status: st, text: tx };
 
   const { data: responseData } = await useFetch("/api/add/addpost/", {
     method: "POST",
@@ -26,6 +27,7 @@ const addpost = async (item, st) => {
     refresh();
     message.value = "";
     status.value = "";
+    text.value = "";
   }
 };
 const deletepost = async (id) => {
@@ -70,12 +72,15 @@ const showUpdate = (idx) => {
         <h1>Mongo</h1>
         <input v-model="message" placeholder="edit me" />
         <input type="checkbox" v-model="status" placeholder="edit me" />
-        <button @click="addpost(message, status)">save</button>
+        <textarea v-model="text" placeholder="add multiple lines"></textarea>
+        <button @click="addpost(message, status, text)">save</button>
         <div class="block" v-for="item in posts" :key="item._id">
           <p>
             {{ item.title }}
           </p>
-
+          <p>
+            {{ item.text }}
+          </p>
           <button @click="showUpdate(item._id)">show</button>
           <button @click="deletepost(item._id)">delete</button>
           <transition>
