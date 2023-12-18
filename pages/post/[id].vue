@@ -26,6 +26,8 @@ if(post.value){
         <p>
             {{ item.text }}
         </p>
+        <div v-html="item.description">
+        </div>
     </div>
     </div> 
 </div>

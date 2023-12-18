@@ -2,6 +2,15 @@
   box-sizing: border-box;
   font-family: Montserrat;
 }
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  /* filter: blur(1rem); */
+}
 button {
   cursor: pointer;
 }
@@ -25,4 +34,15 @@ footer {
 }
 .meny-cabinet {
   padding: 0 0 0 100px;
+}
+:deep(.ql-editor) {
+  min-height: 200px;
+}
+:deep(.ql-toolbar.ql-snow) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+:deep(.ql-container.ql-snow) {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

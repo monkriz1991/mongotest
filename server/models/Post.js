@@ -11,6 +11,7 @@ const postScema = new mongoose.Schema({
   },
   text: { type: String, require: true, trim: true },
   img: { type: String, require: true, trim: true },
+  description: { type: String, require: true, trim: true },
 });
 
 const PostModel = mongoose.model("posttests", postScema);

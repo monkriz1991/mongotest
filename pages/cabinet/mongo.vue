@@ -1,6 +1,11 @@
 <script setup>
+import { QuillEditor } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
+
 const { data: posts, error, refresh } = await useFetch("/api/posts/");
 const message = ref("");
+const description = ref("");
 const text = ref("");
 const img = ref("");
 const status = ref(false);
@@ -15,9 +20,9 @@ const update = ref({
   title: "",
 });
 
-const addpost = async (item, st, tx,pic) => {
-  body.value = { title: item, status: st, text: tx,img:pic };
-
+const addpost = async (item, st, tx,pic,des) => {
+  body.value = { title: item, status: st, text: tx,img:pic,description:des };
+console.log(des)
   const { data: responseData } = await useFetch("/api/add/addpost/", {
     method: "POST",
     headers: {
@@ -74,11 +79,17 @@ const showUpdate = (idx) => {
     <div class="columns">
       <div class="column is-8">
         <h1>Mongo</h1>
+
         <input v-model="message" placeholder="title" />
         <input v-model="img" placeholder="img" />
         <input type="checkbox" v-model="status" placeholder="text" />
         <textarea v-model="text" placeholder="add multiple lines"></textarea>
-        <button @click="addpost(message, status, text , img)">save</button>
+        <ClientOnly>
+          <QuillEditor v-model:content="description" contentType="html" theme="snow"/>
+          {{ description +'kppk'}}
+        </ClientOnly>
+       
+        <button @click="addpost(message, status, text , img,description)">save</button>
         <div class="block" v-for="item in posts" :key="item._id">
           <p>
             {{ item.img }}
@@ -97,7 +108,7 @@ const showUpdate = (idx) => {
               <input v-model="item.title" placeholder="edit me" />
               <input v-model="item.img" placeholder="img" />
               <textarea v-model="item.text" placeholder="add multiple lines"></textarea>
-              <button @click="updatepost(item._id, item.title, item.img,item.text)">save</button>
+              <button @click="updatepost(item._id, item.title, item.img,item.text,item.description)">save</button>
             </div>
           </transition>
         </div>
@@ -117,5 +128,21 @@ const showUpdate = (idx) => {
   border-radius: 5px;
   padding: 20px;
   background: #f9f9f9;
+}
+:deep(.ql-editor) {
+  min-height: 200px;
+}
+.ql-container{
+  float: left;
+    width: 100%;
+    height: 200px;
+}
+:deep(.ql-toolbar.ql-snow) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+:deep(.ql-container.ql-snow) {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 </style>
