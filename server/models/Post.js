@@ -5,9 +5,9 @@ const postScema = new mongoose.Schema({
   status: {
     type: String,
     require: true,
-    unique: true,
-    trim: true,
-    lowercase: true,
+    index: true,
+    unique: false,
+    sparse: true,
   },
   text: { type: String, require: true, trim: true },
   img: { type: String, require: true, trim: true },

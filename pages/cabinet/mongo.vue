@@ -1,7 +1,6 @@
 <script setup>
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
-
+import { QuillEditor } from "@vueup/vue-quill";
+import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 const { data: posts, error, refresh } = await useFetch("/api/posts/");
 const message = ref("");
@@ -20,9 +19,15 @@ const update = ref({
   title: "",
 });
 
-const addpost = async (item, st, tx,pic,des) => {
-  body.value = { title: item, status: st, text: tx,img:pic,description:des };
-console.log(des)
+const addpost = async (item, st, tx, pic, des) => {
+  body.value = {
+    title: item,
+    status: st,
+    text: tx,
+    img: pic,
+    description: des,
+  };
+  // console.log(des);
   const { data: responseData } = await useFetch("/api/add/addpost/", {
     method: "POST",
     headers: {
@@ -52,8 +57,8 @@ const deletepost = async (id) => {
     refresh();
   }
 };
-const updatepost = async (id, title,img,text) => {
-  update.value = { title: title, _id: id,img:img,text:text };
+const updatepost = async (id, title, img, text) => {
+  update.value = { title: title, _id: id, img: img, text: text };
   const { data: responseData } = await useFetch("/api/update/updatepost/", {
     method: "POST",
     headers: {
@@ -85,11 +90,17 @@ const showUpdate = (idx) => {
         <input type="checkbox" v-model="status" placeholder="text" />
         <textarea v-model="text" placeholder="add multiple lines"></textarea>
         <ClientOnly>
-          <QuillEditor v-model:content="description" contentType="html" theme="snow"/>
-          {{ description +'kppk'}}
+          <QuillEditor
+            v-model:content="description"
+            contentType="html"
+            toolbar="full"
+            theme="snow"
+          />
         </ClientOnly>
-       
-        <button @click="addpost(message, status, text , img,description)">save</button>
+
+        <button @click="addpost(message, status, text, img, description)">
+          save
+        </button>
         <div class="block" v-for="item in posts" :key="item._id">
           <p>
             {{ item.img }}
@@ -107,8 +118,23 @@ const showUpdate = (idx) => {
               {{ item._id }}
               <input v-model="item.title" placeholder="edit me" />
               <input v-model="item.img" placeholder="img" />
-              <textarea v-model="item.text" placeholder="add multiple lines"></textarea>
-              <button @click="updatepost(item._id, item.title, item.img,item.text,item.description)">save</button>
+              <textarea
+                v-model="item.text"
+                placeholder="add multiple lines"
+              ></textarea>
+              <button
+                @click="
+                  updatepost(
+                    item._id,
+                    item.title,
+                    item.img,
+                    item.text,
+                    item.description
+                  )
+                "
+              >
+                save
+              </button>
             </div>
           </transition>
         </div>
@@ -132,10 +158,10 @@ const showUpdate = (idx) => {
 :deep(.ql-editor) {
   min-height: 200px;
 }
-.ql-container{
+.ql-container {
   float: left;
-    width: 100%;
-    height: 200px;
+  width: 100%;
+  height: 200px;
 }
 :deep(.ql-toolbar.ql-snow) {
   border-top-left-radius: 5px;
