@@ -83,6 +83,7 @@ const showUpdate = (idx) => {
   <div class="container">
     <div class="columns">
       <div class="column is-8">
+
         <h1>Mongo</h1>
 
         <input v-model="message" placeholder="title" />

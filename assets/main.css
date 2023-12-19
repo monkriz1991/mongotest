@@ -2,6 +2,15 @@
   box-sizing: border-box;
   font-family: Montserrat;
 }
+html {
+  background-color: transparent !important;
+}
+body{
+  background: #f6f8f7;
+}
+body .navbar {
+  background: transparent;
+}
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
@@ -45,4 +54,11 @@ footer {
 :deep(.ql-container.ql-snow) {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+.footer{
+  background-color: #3e3e3e !important;
+  color: #fff;
+    padding: 3rem 1.5rem 6rem;
+    border-radius: 12px;
+    margin: 30px 0 30px;
 }
