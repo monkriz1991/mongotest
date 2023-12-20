@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const categoryScema = new mongoose.Schema({
-  id_category: { type: String, require: true, trim: true },
+  id_category: { type: Number, require: true, trim: true },
   name: { type: String, require: true, trim: true },
   kirilica: { type: String, require: true, trim: true },
   img: { type: String, require: true, trim: true },
