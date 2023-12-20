@@ -1,9 +1,5 @@
 <script setup>
-const userAuht = ref(false);
 const { data: user, signOut } = useAuth();
-if (user.value) {
-  userAuht.value = true;
-}
 const Exit = async () => {
   await signOut();
 };
@@ -29,7 +25,7 @@ const Exit = async () => {
         </div> -->
       </div>
       <div class="navbar-end">
-        <div v-if="userAuht == false" class="navbar-item">
+        <div v-if="user==null" class="navbar-item">
           <div class="buttons">
             <nuxt-link class="button is-primary" to="/login/">Login</nuxt-link>
             <nuxt-link class="button is-light" to="/registration/"

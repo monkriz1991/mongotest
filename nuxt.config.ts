@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-  app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
-  },
+  // app: {
+  //   pageTransition: { name: 'page', mode: 'out-in' }
+  // },
   runtimeConfig: {
     bdurl: process.env.DATABASE_URL,
     dbName: process.env.DBNAME,
@@ -30,23 +30,23 @@ export default defineNuxtConfig({
         },
       },
     ],
-    [
-      "nuxt-mail",
-      {
-        message: {
-          name: "admin",
-          to: "monkriz1991@gmail.com",
-        },
-        smtp: {
-          host: "smtp.gmail.com",
-          port: 465,
-          auth: {
-            user: "monkriz1991",
-            pass: "aeuc ivhx waaw wxxw",
-          },
-        },
-      },
-    ],
+    // [
+    //   "nuxt-mail",
+    //   {
+    //     message: {
+    //       name: "admin",
+    //       to: "monkriz1991@gmail.com",
+    //     },
+    //     smtp: {
+    //       host: "smtp.gmail.com",
+    //       port: 465,
+    //       auth: {
+    //         user: "monkriz1991",
+    //         pass: "aeuc ivhx waaw wxxw",
+    //       },
+    //     },
+    //   },
+    // ],
   ],
   nuxtServerUtils: {
     mongodbUri: process.env.DATABASE_URL,

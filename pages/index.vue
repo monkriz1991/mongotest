@@ -3,7 +3,6 @@ definePageMeta({
   title: "My index page",
   layout: "default",
 });
-const { data: posts, error, refresh } = await useFetch("/api/posts/");
 </script>
 <template>
   <div class="container">
@@ -55,11 +54,6 @@ const { data: posts, error, refresh } = await useFetch("/api/posts/");
         />
       </div>
 
-      <!-- <div class="block" v-for="item in posts" :key="item._id">
-        <p>
-          {{ item.title }}
-        </p>
-      </div> -->
     </div>
   </div>
 </template>
