@@ -1,4 +1,5 @@
 <script setup>
+import { Vue3Lottie } from "vue3-lottie";
 definePageMeta({
   title: "My index page",
   layout: "default",
@@ -9,7 +10,13 @@ definePageMeta({
     <!-- <left-bar /> -->
     <div>
       <h1 class="">Hello !</h1>
-
+      <clientOnly>
+        <Vue3Lottie
+          animation-link="https://assets2.lottiefiles.com/packages/lf20_GbabwrUY2k.json"
+          :height="200"
+          :width="200"
+        />
+      </clientOnly>
       <div class="slider">
         <div class="one-block">
           <div class="rating-circle">
@@ -53,7 +60,6 @@ definePageMeta({
           alt=""
         />
       </div>
-
     </div>
   </div>
 </template>
