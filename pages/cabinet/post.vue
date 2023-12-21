@@ -107,7 +107,7 @@ const handleCurrentChange = (val) => {
       <div class="column is-8">
         <div class="content">
           <div></div>
-          <h1>Category</h1>
+          <h1>Post</h1>
           <div class="drawer-add">
             <button
               class="button is-success"

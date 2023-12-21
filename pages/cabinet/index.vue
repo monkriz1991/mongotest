@@ -12,7 +12,9 @@ const { data, signOut } = useAuth();
       <div class="column is-8">
         <h1>Cabinet</h1>
         <div>
-          {{ data }}
+          <div v-for="item in data.user" :key="item">
+            {{ item }}
+          </div>
         </div>
       </div>
       <div class="column is-4">

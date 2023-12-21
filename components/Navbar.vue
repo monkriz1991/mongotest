@@ -17,18 +17,18 @@ const Exit = async () => {
         >
       </div>
       <div class="navbar-menu">
-        <div class="navbar-start">
+        <!-- <div class="navbar-start">
           <nuxt-link class="navbar-item ml-6" :to="`/mongo/`">Post</nuxt-link>
-        </div>
+        </div> -->
         <div class="navbar-start">
-          <MenyNav/>
+          <MenyNav />
         </div>
         <!-- <div class="navbar-start">
           <nuxt-link class="navbar-item ml-6" :to="`/email/`">email</nuxt-link>
         </div> -->
       </div>
       <div class="navbar-end">
-        <div v-if="user==null" class="navbar-item">
+        <div v-if="user == null" class="navbar-item">
           <div class="buttons">
             <nuxt-link class="button is-primary" to="/login/">Login</nuxt-link>
             <nuxt-link class="button is-light" to="/registration/"
