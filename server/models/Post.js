@@ -1,16 +1,12 @@
 import mongoose from "mongoose";
 
 const postScema = new mongoose.Schema({
+  category: { type: String, require: true, trim: true },
   title: { type: String, require: true, trim: true },
-  status: {
-    type: String,
-    require: true,
-    index: true,
-    unique: false,
-    sparse: true,
-  },
-  text: { type: String, require: true, trim: true },
+  kirilica: { type: String, require: true, trim: true },
+  preview: { type: String, require: true, trim: true },
   img: { type: String, require: true, trim: true },
+  info: { type: String, require: true, trim: true },
   description: { type: String, require: true, trim: true },
 });
 

@@ -35,6 +35,7 @@ const {
   body: { sortPage, pageSize },
 });
 const addPost = async () => {
+  console.log(form.value);
   let updatepost = "api/update/updatepost";
   if (buttonEdit.value == true) {
     updatepost = "api/add/addpost";
@@ -76,7 +77,7 @@ const drawerIn = (item) => {
     (form.value.description = item.description),
     (drawer.value = true);
   if (item.description == undefined) {
-    form.value.description = [];
+    form.value.description = "";
   } else {
     form.value.description = item.description;
   }
@@ -88,7 +89,6 @@ const drawerNull = () => {
   drawer.value = true;
   buttonEdit.value = true;
   form.value = {};
-  form.value.description = [];
 };
 const handleCurrentChange = (val) => {
   if (val == 1) {
@@ -314,8 +314,5 @@ const handleCurrentChange = (val) => {
 }
 .drawer-cat-right button {
   margin: 0 0px 0 10px;
-}
-.ql-container {
-  min-height: 350px;
 }
 </style>
