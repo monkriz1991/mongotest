@@ -20,6 +20,9 @@ const Exit = async () => {
         <div class="navbar-start">
           <nuxt-link class="navbar-item ml-6" :to="`/mongo/`">Post</nuxt-link>
         </div>
+        <div class="navbar-start">
+          <MenyNav/>
+        </div>
         <!-- <div class="navbar-start">
           <nuxt-link class="navbar-item ml-6" :to="`/email/`">email</nuxt-link>
         </div> -->

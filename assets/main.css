@@ -4,6 +4,7 @@
 }
 html {
   background-color: transparent !important;
+  overflow: visible !important;
 }
 body{
   background: #f6f8f7;
@@ -60,5 +61,9 @@ footer {
   color: #fff;
     padding: 3rem 1.5rem 6rem;
     border-radius: 12px;
-    margin: 30px 0 30px;
+    margin: 100px 0 30px;
+}
+
+.el-popup-parent--hidden {
+  overflow: hidden ;
 }

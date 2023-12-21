@@ -31,18 +31,17 @@ const addCategory = async () =>{
     if(buttonEdit.value==true){
         updatepost = "api/add/addcategory"
     }
-  const { data: responseData } = await useFetch(`/${updatepost}/`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-    },
-    body: form.value,
-  });
-
-  if (responseData) {
-    refresh();
-    form.value = {};
-  }
+    const { data: responseData } = await useFetch(`/${updatepost}/`, {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: form.value,
+    });
+    if (responseData) {
+        refresh();
+        form.value = {};
+    }
 }
 const drawerDel = async (id) => {
   dell.value = { _id: id };
@@ -106,8 +105,8 @@ const handleCurrentChange = (val) => {
                            <!-- <span>{{ item.kirilica }}</span>   
                            <span>{{ item.description }}</span> -->
                             <div class="drawer-cat-right">
-                                <button class="button" type="submit" @click="drawerIn(item)">Edit</button>
-                                <button class="button" type="submit" @click="drawerDel(item._id)">Delete</button>
+                                <button class="button is-warning is-normal is-light" type="submit" @click="drawerIn(item)">Edit</button>
+                                <button class="button is-danger is-normal is-light" type="submit" @click="drawerDel(item._id)">Delete</button>
                             </div>
                         </div> 
                     </div>
@@ -202,8 +201,8 @@ const handleCurrentChange = (val) => {
 .drawer-cat{
     border-radius: 4px;
     min-height: 36px;
-    background: #e2e4e6;
-    padding: 15px;
+    /* background: #e2e4e6; */
+    padding: 15px 15px 15px 0;
     margin: 0 0 20px;
     display: flex;
     align-items: center;

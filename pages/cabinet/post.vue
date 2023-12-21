@@ -1,4 +1,8 @@
 <script setup>
+definePageMeta({
+  middleware: "auth",
+  layout: "custom",
+});
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
