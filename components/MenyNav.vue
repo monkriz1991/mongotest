@@ -12,24 +12,26 @@ const {
 });
 
 function onClickOutside(event, el) {
-  console.log(event);
+  if(event.target.className!=='button button-meny'){
+      if(event.target.className!=='meny-nav-cat'){
+        visible.value = false
+    }
+  }
 }
 </script>
 
 <template>
   <div class="meny-nav">
-    <button class="button" @click="visible = !visible">Meny</button>
-    <client-only>
-      <div class="meny-nav-cat" v-show="visible == true">
-        <div v-click-outside="onClickOutside" v-if="category">
+    <button class="button button-meny" @click="visible = !visible">Meny</button>
+      <div class="meny-nav-cat"  v-show="visible == true">
+        <div class="meny-nav-show" v-if="category" v-click-outside="onClickOutside">
           <div v-for="item in category" :key="item._id">
-            <nuxt-link :to="`/catalog/` + item.kirilica">
+            <nuxt-link :to="`/catalog/` + item.kirilica" @click="visible = false">
               {{ item.name }}</nuxt-link
             >
           </div>
         </div>
       </div>
-    </client-only>
   </div>
 </template>
 <style>
