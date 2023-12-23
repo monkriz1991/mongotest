@@ -18,7 +18,8 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-server-utils",
     "@sidebase/nuxt-auth",
-    '@element-plus/nuxt',
+    "@element-plus/nuxt",
+    "nuxt-icons",
     "nuxt-icon",
     [
       "@nuxtjs/google-fonts",
@@ -57,6 +58,6 @@ export default defineNuxtConfig({
       type: "authjs",
     },
   },
-  
+
   devtools: { enabled: true },
 });

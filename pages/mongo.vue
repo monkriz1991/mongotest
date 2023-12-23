@@ -30,34 +30,3 @@ const {
     </div>
   </div>
 </template>
-
-<style>
-button {
-  cursor: pointer;
-}
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-}
-.block {
-  float: left;
-  width: 100%;
-  margin: 0 0 15px;
-  border-radius: 5px;
-  padding: 20px;
-  background: #f9f9f9;
-}
-.block-img {
-  float: left;
-  width: 250px;
-  height: 150px;
-  margin: 0 20px 0 0;
-}
-.block-img img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: contain;
-  object-fit: cover;
-  border-radius: 12px;
-}
-</style>
