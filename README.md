@@ -73,6 +73,7 @@ bun run preview
 ```
 
 ## .env
+```
 DATABASE_URL = "mongodb://127.0.0.1:27017/mongo"
 DBNAME = "testone"
 DBUSERNAME = ""
@@ -80,7 +81,7 @@ DBPASSWORD = ""
 DBAUTHSOURCE = ""
 AUTH_ORIGIN = "http://localhost:3000"
 AUTH_SECRET ="jskfmkfjiwefijseifjsijfiejifjeifjiejfiejifjfvxneshuurueysufhs"
-
+```
 
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
