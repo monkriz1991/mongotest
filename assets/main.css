@@ -63,7 +63,43 @@ footer {
   border-radius: 12px;
   margin: 100px 0 30px;
 }
-
+.meny-nav {
+  position: relative;
+}
+.meny-nav > button {
+  margin: 0 0 0 50px;
+}
+.navbar-menu .navbar-start {
+  align-items: center;
+}
+.meny-nav-cat {
+  position: absolute;
+  background: #fff;
+  padding: 30px 30px 15px;
+  border-radius: 14px;
+  width: 430px;
+  margin: 10px 0 0 50px;
+  box-shadow: 0px 0px 16px -15px #000000;
+}
+.meny-nav-cat a {
+  display: flex;
+  align-items: center;
+  margin: 0 0 15px;
+}
+.meny-nav-img {
+  height: 70px;
+  width: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 15px 0 0;
+}
+.meny-nav-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.meny-nav-title {
+}
 .el-popup-parent--hidden {
   overflow: hidden;
 }
@@ -93,7 +129,7 @@ button {
   height: 100%;
   -o-object-fit: contain;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 17px;
 }
 .post h1 {
   font-size: 42px;
@@ -110,16 +146,48 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 22px;
 }
 .post-top {
   width: 100%;
+  padding: 0 0 0 20px;
 }
 .post-top-item {
-  background: #ffffff;
+  /* background: #ffffff; */
   height: 200px;
   border-radius: 14px;
-  padding: 30px;
+  padding: 0 30px 0 30px;
+}
+.post-desk{
+
+}
+.post-desk img{
+  border-radius: 22px;
+  width: 100%;
+}
+.post-a-item{
+  float: left;
+  width: 100%;
+}
+.post-a-item{
+  text-decoration: none;
+  color: #000;
+}
+.block-desc{
+  margin: 0 0 0 280px;
+}
+.block-desc>strong{
+  float: left;
+  width: 100%;
+  margin: 10px 0 20px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.block-desc>span{
+  float: left;
+  width: 100%;
+  height: 80px;
 }
 .img-test {
   float: left;
@@ -136,7 +204,7 @@ button {
 .slider {
   float: left;
   width: 100%;
-  margin: 60px 0 40px;
+  margin: 30px 0 40px;
 }
 .block {
   float: left;
@@ -256,4 +324,15 @@ button {
   /* bottom: 0px; */
   font-size: 51px;
   color: #fff;
+}
+.post-top-link{
+  text-decoration: underline;
+  color: #5a5a5a;
+  font-size: 14px;
+  margin: 0 0 15px;
+  float: left;
+  width: 100%;
+}
+.post-top-link>strong{
+  font-weight: 700;
 }

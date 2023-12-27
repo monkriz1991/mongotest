@@ -88,11 +88,16 @@ const handleCurrentChange = (val) => {
         <div class="columns">
             <div class="column is-8">
                 <div class="content">
-                <h1>Category</h1>
+                    <div class="cat-h1-cab">
+                        <h1>Category</h1>
+                        <button class="button is-white" type="primary" @click="drawerNull">
+                            <span class="icon">
+                                <Icon class="modal-b-svg" name="solar:add-square-broken" />
+                            </span>  
+                            <span>Добавить категорию</span>    
+                        </button>
+                    </div>
                 <div class="drawer-add">
-                    <button class="button is-success" type="primary" @click="drawerNull">
-                        Добавить категорию
-                    </button>
                     <div v-if="category.result" class="drawer-cat-all">
                         <div class="drawer-cat" v-for="item in category.result" :key="item">
                             <div class="drawer-cat-left">
@@ -189,53 +194,17 @@ const handleCurrentChange = (val) => {
 </template>
 
 <style>
-.drawer-cat-all{
-    margin: 30px 0 0 0;
-}
-.drawer-add{
-
-}
-.drawer-block{
-    padding: 25px 100px;
-}
-.drawer-cat{
-    border-radius: 4px;
-    min-height: 36px;
-    /* background: #e2e4e6; */
-    padding: 15px 15px 15px 0;
+.cat-h1-cab{
+    float: left;
+    width: 100%;
     margin: 0 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
-.drawer-cat-img{
-height: 100px;
-width:140px;
-margin:0 20px 0 0;
-border-radius: 6px;
-overflow:hidden;
+.cat-h1-cab h1{
+    float: left;
 }
-.drawer-cat-img img{
-height: 100%;
-width: 100%;
-object-fit: cover;
-}
-.drawer-cat-left{
-    display: flex;
-    align-items: center;
-}
-.drawer-cat-right{
-    display: flex;
-    align-items: center;
-}
-.drawer-cat-left span{
-    font-size: 13px;
-    margin:0 20px 0 0;
-}
-.drawer-cat-left span{
-
-}
-.drawer-cat-right button{
-    margin:0 0px 0 10px;
+.cat-h1-cab button{
+    float: right;
+    font-size: 15px;
+    border-radius: 5px;
 }
 </style>

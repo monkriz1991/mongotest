@@ -81,7 +81,6 @@ const drawerIn = (item) => {
     form.value.description = item.description;
   }
   buttonEdit.value = false;
-  console.log(form.value);
 };
 
 const drawerNull = () => {
@@ -106,16 +105,16 @@ const handleCurrentChange = (val) => {
     <div class="columns">
       <div class="column is-8">
         <div class="content">
-          <div></div>
-          <h1>Post</h1>
+          <div class="cat-h1-cab">
+              <h1>Post</h1>
+              <button class="button is-white" type="primary" @click="drawerNull">
+                  <span class="icon">
+                      <Icon class="modal-b-svg" name="solar:add-square-broken" />
+                  </span>  
+                  <span>Добавить пост</span>    
+              </button>
+          </div>
           <div class="drawer-add">
-            <button
-              class="button is-success"
-              type="primary"
-              @click="drawerNull"
-            >
-              Добавить пост
-            </button>
             <div v-if="post.result" class="drawer-cat-all">
               <div class="drawer-cat" v-for="item in post.result" :key="item">
                 <div class="drawer-cat-left">
@@ -287,8 +286,8 @@ const handleCurrentChange = (val) => {
   justify-content: space-between;
 }
 .drawer-cat-img {
-  height: 100px;
-  width: 140px;
+  height: 110px;
+  width: 180px;
   margin: 0 20px 0 0;
   border-radius: 6px;
   overflow: hidden;

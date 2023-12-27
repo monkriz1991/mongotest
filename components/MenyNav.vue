@@ -67,7 +67,7 @@ function onClickOutside(event, el) {
 .meny-nav-cat {
   position: absolute;
   background: #fff;
-  padding: 30px;
+  padding: 30px 30px 15px;
   border-radius: 14px;
   width: 430px;
   margin: 10px 0 0 50px;
@@ -75,8 +75,10 @@ function onClickOutside(event, el) {
 }
 .meny-nav-cat a {
   display: flex;
-  align-items: center;
-  margin: 0 0 15px;
+    align-items: center;
+    margin: 0 0 15px;
+    color: #333;
+    font-size: 16px;
 }
 .meny-nav-img {
   height: 70px;
