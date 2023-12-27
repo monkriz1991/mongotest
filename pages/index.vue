@@ -4,6 +4,12 @@ definePageMeta({
   title: "My index page",
   layout: "default",
 });
+const { data: main, refresh } = await useFetch("/api/main/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json; charset=UTF-8",
+  },
+});
 </script>
 <template>
   <div class="container">
@@ -11,34 +17,32 @@ definePageMeta({
     <div>
       <!-- <h1 class="">Hello !</h1> -->
       <div class="slider">
-        <div class="one-block">
+        <div class="one-block" v-for="item in main.one" :key="item">
           <div class="rating-circle">
             <div class="star-icon">
               <Icon name="material-symbols:kid-star-outline" />
             </div>
-            <span>9,4</span>
+            <span>{{ item.raiting }}</span>
           </div>
-          <img
-            src="https://www.team17.com/wp-content/uploads/2021/08/Trepang2-Snippet-image-800x500.png"
-            alt=""
-          />
-          <div class="one-block-inf">
-            <strong>Title</strong>
-            <span>Descrition</span>
-          </div>
+          <img :src="item.img" :alt="item.title" />
+          <nuxt-link :to="'/post/' + item.link">
+            <div class="one-block-inf">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.description }}</span>
+            </div>
+          </nuxt-link>
         </div>
-        <div class="two-block">
-          <img
-            src="https://st2.depositphotos.com/3584689/11223/i/450/depositphotos_112238158-stock-illustration-sci-fi-gaming-character-in.jpg"
-            alt=""
-          />
-          <div class="one-block-inf">
-            <strong>Title</strong>
-            <span>Descrition</span>
-          </div>
-          <div class="play-icon">
+        <div class="two-block" v-for="item in main.two" :key="item">
+          <img :src="item.img" :alt="item.title" />
+          <nuxt-link :to="'/post/' + item.link">
+            <div class="one-block-inf">
+              <strong>{{ item.title }}</strong>
+              <span>{{ item.description }}</span>
+            </div>
+          </nuxt-link>
+          <!-- <div class="play-icon">
             <Icon name="solar:play-circle-bold" />
-          </div>
+          </div> -->
         </div>
       </div>
       <clientOnly>
@@ -48,17 +52,8 @@ definePageMeta({
           :width="200"
         />
       </clientOnly>
-      <div class="img-test">
-        <img
-          src="https://drive.google.com/uc?export=view&id=1pqiqUPdHuY5whzeU-OeIts0PDw8N71uR"
-          alt=""
-        />
-      </div>
-      <div class="img-test">
-        <img
-          src="https://drive.google.com/uc?export=view&id=1og7flcjtz4B1n3uenBZ95MHUT4GbX6oh"
-          alt=""
-        />
+      <div class="img-test" v-for="item in main.three" :key="item">
+        <img :src="item.img" :alt="item.title" />
       </div>
     </div>
   </div>
