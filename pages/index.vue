@@ -45,16 +45,22 @@ const { data: main, refresh } = await useFetch("/api/main/", {
           </div> -->
         </div>
       </div>
-      <clientOnly>
+
+      <div class="img-test" v-for="item in main.three" :key="item">
+        <img :src="item.img" :alt="item.title" />
+        <nuxt-link :to="'/post/' + item.link">
+          <div class="one-block-inf">
+            <strong>{{ item.title }}</strong>
+          </div>
+        </nuxt-link>
+      </div>
+      <!-- <clientOnly>
         <Vue3Lottie
           animation-link="https://assets2.lottiefiles.com/packages/lf20_GbabwrUY2k.json"
           :height="200"
           :width="200"
         />
-      </clientOnly>
-      <div class="img-test" v-for="item in main.three" :key="item">
-        <img :src="item.img" :alt="item.title" />
-      </div>
+      </clientOnly> -->
     </div>
   </div>
 </template>
