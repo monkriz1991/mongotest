@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: git pull
-        uses: fifsky/ssh-action@main
+        uses: fifsky/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -19,7 +19,7 @@ jobs:
             cd /var/www/www-root/data/www/cryptoscool.ru
             git pull
       - name: install packages
-        uses: fifsky/ssh-action@main
+        uses: fifsky/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -28,7 +28,7 @@ jobs:
             cd /var/www/www-root/data/www/cryptoscool.ru
             npm install
       - name: build
-        uses: fifsky/ssh-action@main
+        uses: fifsky/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
