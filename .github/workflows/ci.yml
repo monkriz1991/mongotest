@@ -2,10 +2,10 @@ name: ci
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  deploy-plumbing:
+  deploy-cryptoscool:
     runs-on: ubuntu-latest
 
     steps:
