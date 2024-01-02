@@ -60,7 +60,7 @@ footer {
   background-color: #ededed !important;
   color: #989898;
   padding: 3rem 1.5rem 6rem;
-  border-radius: 12px;
+  border-radius: 13px;
   margin: 100px 0 30px;
 }
 .meny-nav {
@@ -158,25 +158,24 @@ button {
   border-radius: 14px;
   padding: 0 30px 0 30px;
 }
-.post-desk{
-
+.post-desk {
 }
-.post-desk img{
+.post-desk img {
   border-radius: 22px;
   width: 100%;
 }
-.post-a-item{
+.post-a-item {
   float: left;
   width: 100%;
 }
-.post-a-item{
+.post-a-item {
   text-decoration: none;
   color: #000;
 }
-.block-desc{
+.block-desc {
   margin: 0 0 0 280px;
 }
-.block-desc>strong{
+.block-desc > strong {
   float: left;
   width: 100%;
   margin: 10px 0 20px;
@@ -184,7 +183,7 @@ button {
   font-weight: 800;
   line-height: 1.4;
 }
-.block-desc>span{
+.block-desc > span {
   float: left;
   width: 100%;
   height: 80px;
@@ -325,7 +324,7 @@ button {
   font-size: 51px;
   color: #fff;
 }
-.post-top-link{
+.post-top-link {
   text-decoration: underline;
   color: #5a5a5a;
   font-size: 14px;
@@ -333,6 +332,6 @@ button {
   float: left;
   width: 100%;
 }
-.post-top-link>strong{
+.post-top-link > strong {
   font-weight: 700;
 }
