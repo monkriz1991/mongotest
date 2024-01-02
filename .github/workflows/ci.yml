@@ -27,7 +27,6 @@ jobs:
           command: |
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
             npm install
-            npm update
       - name: build
         uses: fifsky/ssh-action@master
         with:
