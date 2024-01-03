@@ -58,6 +58,5 @@ export default defineNuxtConfig({
       type: "authjs",
     },
   },
-
   devtools: { enabled: true },
 });

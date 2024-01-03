@@ -35,10 +35,10 @@ const fetchData = async () => {
 export default defineNuxtPlugin((nuxtApp) => {
   fetchData()
     .then((data) => {
-      console.log("Полученные данные:", data);
+      //   console.log("Полученные данные:", data);
       // Здесь вы можете сделать что-то с полученными данными
     })
     .catch((error) => {
-      console.error("Ошибка при получении данных:", error);
+      //   console.error("Ошибка при получении данных:", error);
     });
 });
