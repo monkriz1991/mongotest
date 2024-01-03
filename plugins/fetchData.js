@@ -1,4 +1,4 @@
-// fetchData.js
+// // fetchData.js
 import { defineNuxtPlugin } from "#app";
 import https from "https"; // Используем импорт вместо require
 
@@ -32,13 +32,13 @@ const fetchData = async () => {
   });
 };
 
-export default defineNuxtPlugin((nuxtApp) => {
-  fetchData()
-    .then((data) => {
-      //   console.log("Полученные данные:", data);
-      // Здесь вы можете сделать что-то с полученными данными
-    })
-    .catch((error) => {
-      //   console.error("Ошибка при получении данных:", error);
-    });
-});
+// export default defineNuxtPlugin((nuxtApp) => {
+//   fetchData()
+//     .then((data) => {
+//       console.log("Полученные данные:", data);
+//       // Здесь вы можете сделать что-то с полученными данными
+//     })
+//     .catch((error) => {
+//       console.error("Ошибка при получении данных:", error);
+//     });
+// });
