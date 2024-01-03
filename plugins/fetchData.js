@@ -1,7 +1,8 @@
 // fetchData.js
-const https = require("https");
+import { defineNuxtPlugin } from "#app";
+import https from "https"; // Используем импорт вместо require
 
-export async function fetchData() {
+const fetchData = async () => {
   const options = {
     hostname: "cryptoscool.ru",
     port: 443,
@@ -29,4 +30,15 @@ export async function fetchData() {
 
     req.end();
   });
-}
+};
+
+export default defineNuxtPlugin((nuxtApp) => {
+  fetchData()
+    .then((data) => {
+      console.log("Полученные данные:", data);
+      // Здесь вы можете сделать что-то с полученными данными
+    })
+    .catch((error) => {
+      console.error("Ошибка при получении данных:", error);
+    });
+});
