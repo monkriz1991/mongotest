@@ -5,6 +5,7 @@ import User from "~/server/models/User";
 
 export default NuxtAuthHandler({
   secret: "uih8y8hiujbhiuhg8787t667r6f65r65d65d6d65d65d65d65d6",
+  // secret: useRuntimeConfig().authSecret,
 
   pages: {
     signIn: "/login",
