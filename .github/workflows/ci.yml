@@ -16,6 +16,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASS }}
           command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
             git pull
       - name: install packages
@@ -25,7 +26,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASS }}
           command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
             nvm use v16
             node -e "console.log('Running Node.js ' + process.version)"
