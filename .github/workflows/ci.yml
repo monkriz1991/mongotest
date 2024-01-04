@@ -22,7 +22,7 @@ jobs:
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
             git pull
       - name: install packages
-        uses: fifsky/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.2
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
