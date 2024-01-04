@@ -17,6 +17,8 @@ jobs:
           pass: ${{ secrets.SSH_PASS }}
           command: |
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+            chmod +x ~/.nvm/nvm.sh
+            source ~/.bashrc
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
             git pull
       - name: install packages
