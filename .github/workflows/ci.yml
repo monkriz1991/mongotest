@@ -26,8 +26,6 @@ jobs:
           pass: ${{ secrets.SSH_PASS }}
           command: |
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
-            npm install nvm
-            nvm use v16.13.1
-            npm install
-            npm run build
+            npm install nvm && nvm use v16.13.1
+            npm install && npm run build
             pm2 restart cryptoscool
