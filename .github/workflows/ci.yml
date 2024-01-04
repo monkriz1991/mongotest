@@ -27,7 +27,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASS }}
-          command: |
+          script: |
             echo "start installing"
             apt update
             node -e "console.log('Running Node.js ' + process.version)"
