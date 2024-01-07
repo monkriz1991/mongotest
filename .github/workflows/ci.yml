@@ -16,25 +16,24 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASS }}
           command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+            chmod +x ~/.nvm/nvm.sh
+            source ~/.bashrc
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
             git pull
       - name: install packages
-        uses: fifsky/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.2
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
-          pass: ${{ secrets.SSH_PASS }}
-          command: |
+          password: ${{ secrets.SSH_PASS }}
+          script: |
+            echo "start installing"
+            apt update
+            node -e "console.log('Running Node.js ' + process.version)"
             cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
-            npm install
-      - name: build
-        uses: fifsky/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          pass: ${{ secrets.SSH_PASS }}
-          command: |
-            cd /var/www/www-root/data/www/cryptoscool.ru/mongotest
-            nvm use v16.13.1
-            npm run build
+            node -e "console.log('Running Node.js ' + process.version)"
+            nvm use v16
+            node -e "console.log('Running Node.js ' + process.version)"
+            npm install && npm run build
             pm2 restart cryptoscool
