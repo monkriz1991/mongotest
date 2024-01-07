@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-server-utils",
     "@sidebase/nuxt-auth",
+    "nuxt-swiper",
     "@element-plus/nuxt",
     "nuxt-icons",
     "nuxt-icon",

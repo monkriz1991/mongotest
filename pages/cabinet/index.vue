@@ -55,11 +55,13 @@ const { data: main, refresh } = await useFetch("/api/main/", {
     "Content-Type": "application/json; charset=UTF-8",
   },
 });
+console.log(main);
 const addMain = async () => {
   let updatemain = "api/update/updatemain";
   if (buttonEdit.value == true) {
     updatemain = "api/add/addmain";
   }
+  console.log(form);
   const { data: responseData } = await useFetch(`/${updatemain}/`, {
     method: "POST",
     headers: {
@@ -185,7 +187,9 @@ const drawerNull = () => {
                       v-for="(item, index) in form[selectForm]"
                       :key="index"
                       class="field"
-                      v-show="index != '__v' && index != '_id'"
+                      v-show="
+                        index != '__v' && index != '_id' && index != 'type'
+                      "
                     >
                       <div class="control">
                         <input
