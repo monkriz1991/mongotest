@@ -33,6 +33,7 @@ const form = reactive({
     img: "",
     description: "",
     link: "",
+    color:"",
   },
 });
 const optionForm = [
@@ -55,19 +56,20 @@ const { data: main, refresh } = await useFetch("/api/main/", {
     "Content-Type": "application/json; charset=UTF-8",
   },
 });
-console.log(main);
 const addMain = async () => {
   let updatemain = "api/update/updatemain";
+  let formObj = {}
   if (buttonEdit.value == true) {
     updatemain = "api/add/addmain";
   }
-  console.log(form);
+  formObj = form[selectForm.value]
+  formObj['type'] = selectForm.value
   const { data: responseData } = await useFetch(`/${updatemain}/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
     },
-    body: { form: form[selectForm.value], type: selectForm.value },
+    body: { form:formObj},
     watch: false,
   });
   if (responseData) {
@@ -158,12 +160,14 @@ const drawerNull = () => {
                 </div>
               </div>
             </div>
+            <ClientOnly>
             <el-drawer
               v-model="drawer"
               title="I am the title"
               :with-header="false"
               size="60%"
             >
+            
               <span>Hi there!</span>
               <div class="drawer-block">
                 <div v-show="buttonEdit == true">
@@ -181,16 +185,12 @@ const drawerNull = () => {
                     />
                   </el-select>
                 </div>
-                <form @submit.prevent="addMain">
-                  <div v-if="selectForm" class="field">
+                <form v-if="selectForm" @submit.prevent="addMain">
+      
+                  <div class="field" v-for="(item, index) in form[selectForm]" :key="index">
                     <div
-                      v-for="(item, index) in form[selectForm]"
-                      :key="index"
                       class="field"
-                      v-show="
-                        index != '__v' && index != '_id' && index != 'type'
-                      "
-                    >
+                      v-show="index != '__v' && index != '_id' && index != 'type' && index != 'color'">
                       <div class="control">
                         <input
                           class="input"
@@ -200,7 +200,14 @@ const drawerNull = () => {
                         />
                       </div>
                     </div>
+                    <div class="field" v-if="index == 'color'">
+                        <el-color-picker
+                          v-model="form[selectForm][index]"
+                          show-alpha
+                        />
+                    </div>
                   </div>
+     
                   <div class="field">
                     <div class="control">
                       <button
@@ -222,7 +229,9 @@ const drawerNull = () => {
                   </div>
                 </form>
               </div>
+            
             </el-drawer>
+          </ClientOnly>
           </div>
         </div>
       </div>

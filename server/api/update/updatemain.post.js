@@ -6,15 +6,15 @@ export default defineEventHandler(async (event) => {
   try {
     const data = await readBody(event);
     const obj = { _id: data.form._id };
-    if (data.type == "one") {
+    if (data.form['type'] == "one") {
       const post = await MainOneModel.replaceOne(obj, data.form);
       return post;
     }
-    if (data.type == "two") {
+    if (data.form['type'] == "two") {
       const post = await MainTwoModel.replaceOne(obj, data.form);
       return post;
     }
-    if (data.type == "three") {
+    if (data.form['type'] == "three") {
       const post = await MainThreeModel.replaceOne(obj, data.form);
       return post;
     }

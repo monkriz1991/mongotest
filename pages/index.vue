@@ -4,7 +4,13 @@ definePageMeta({
   title: "My index page",
   layout: "default",
 });
-const { data: main, refresh } = await useFetch("/api/main/", {
+const { data: main } = await useFetch("/api/main/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json; charset=UTF-8",
+  },
+});
+const { data: top } = await useFetch("/api/top/", {
   method: "POST",
   headers: {
     "Content-Type": "application/json; charset=UTF-8",
@@ -13,6 +19,7 @@ const { data: main, refresh } = await useFetch("/api/main/", {
 </script>
 <template>
   <div class="container">
+    <div class="content">
     <div class="slider">
       <div class="slider-one">
         <Swiper
@@ -73,19 +80,45 @@ const { data: main, refresh } = await useFetch("/api/main/", {
       </div>
     </div>
     <div class="columns">
-      <div class="column is-one-fifth">
-        <div class="img-cat-index" v-for="item in main.three" :key="item">
+      <div class="column is-12">
+        <h4>Категории</h4>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-one-fifth mb-6" v-for="item in main.three" :key="item">
+        <div class="img-cat-index" 
+        
+        :style="`background-color: ${item.color}`">
           <nuxt-link :to="'/post/' + item.link">
             <img :src="item.img" :alt="item.title" />
             <div class="img-cat-index-inf">
-              <span class="icon">
+              <!-- <span class="icon">
                 <Icon class="modal-b-svg" name="carbon:document-pdf" />
-              </span>
+              </span> -->
               <strong>{{ item.title }}</strong>
             </div>
           </nuxt-link>
         </div>
       </div>
     </div>
+    <div class="columns">
+      <div class="column is-12 mt-6">
+        <h4>Топ товаров</h4>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-3" v-for="item in top" :key="item">
+        <nuxt-link class="index-top" :to="'/post/' + item._id">
+            <div class="index-top-img">
+              <img :src="item.img">
+            </div>
+            <strong>
+              {{ item.title }}
+            </strong>
+        </nuxt-link>
+      </div>
+    </div>
+ 
+  </div>
   </div>
 </template>

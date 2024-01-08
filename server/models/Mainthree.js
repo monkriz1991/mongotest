@@ -6,6 +6,7 @@ const mainthreeScema = new mongoose.Schema({
   img: { type: String, require: true, trim: true },
   link: { type: String, require: true, trim: true },
   description: { type: String, require: true, trim: true },
+  color: { type: String, require: true, trim: true },
 });
 
 const MainThreeModel = mongoose.model("mainthree", mainthreeScema);

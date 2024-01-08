@@ -7,6 +7,8 @@ const postScema = new mongoose.Schema({
   preview: { type: String, require: true, trim: true },
   img: { type: String, require: true, trim: true },
   info: { type: String, require: true, trim: true },
+  price: { type: Number, require: true, trim: true },
+  show_index: { type: Boolean, require: true, trim: true },
   description: { type: String, require: true, trim: true },
 });
 

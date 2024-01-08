@@ -6,8 +6,14 @@ definePageMeta({
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
-// const editor = shallowRef(QuillEditor);
-// const pageTotal = ref(0)
+const {
+  data: category
+} = await useFetch("/api/category/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json; charset=UTF-8",
+  },
+});
 const sortPage = ref(0);
 const currentPage = ref(1);
 const pageSize = ref(2);
@@ -18,10 +24,12 @@ const form = ref({
   category: "",
   title: "",
   preview: "",
+  price: "",
   kirilica: "",
   img: "",
   info: "",
   description: "",
+  show_index:"",
 });
 const {
   data: post,
@@ -67,20 +75,32 @@ const drawerDel = async (id) => {
 };
 const drawerIn = (item) => {
   form.value._id = item._id;
-  (form.value.category = item.category),
+    (form.value.category = item.category),
     (form.value.title = item.title),
     (form.value.preview = item.preview),
-    (form.value.kirilica = item.kirilica),
+   
     (form.value.img = item.img),
+    (form.value.price = item.price),
     (form.value.info = item.info),
     (form.value.description = item.description),
+    (form.value.show_index = item.show_index),
     (drawer.value = true);
-  if (item.description == undefined) {
-    form.value.description = [];
-  } else {
-    form.value.description = item.description;
-  }
-  buttonEdit.value = false;
+  
+    for(let catall  in category){
+      for(let catim  in category[catall]){
+        if(category[catall][catim]!=undefined){
+          if(item.kirilica==category[catall][catim]['kirilica']){
+            form.value.kirilica = category[catall][catim].kirilica
+          } 
+        }
+      }
+    }
+    if (item.description == undefined) {
+      form.value.description = [];
+    } else {
+      form.value.description = item.description;
+    }
+    buttonEdit.value = false;
 };
 
 const drawerNull = () => {
@@ -155,13 +175,21 @@ const handleCurrentChange = (val) => {
                 <div class="drawer-block">
                   <form @submit.prevent="addPost">
                     <div class="field">
-                      <div class="control">
-                        <input
-                          class="input"
-                          type="text"
-                          placeholder="category"
-                          v-model="form.category"
+                      <el-select v-model="form.kirilica" class="" placeholder="category" size="large">
+                        <el-option
+                          v-for="item in category"
+                          :key="item.id_category"
+                          :label="item.name"
+                          :value="item.kirilica"
                         />
+                      </el-select>
+                    </div>
+                    <div class="field">
+                      <div class="control">
+                        <el-checkbox
+                          placeholder="show_indeex"
+                          v-model="form.show_index"
+                        >Показывать на главной</el-checkbox>
                       </div>
                     </div>
                     <div class="field">
@@ -188,9 +216,9 @@ const handleCurrentChange = (val) => {
                       <div class="control">
                         <input
                           class="input"
-                          type="text"
-                          placeholder="img"
-                          v-model="form.img"
+                          type="number"
+                          placeholder="price"
+                          v-model="form.price"
                         />
                       </div>
                     </div>
@@ -199,11 +227,21 @@ const handleCurrentChange = (val) => {
                         <input
                           class="input"
                           type="text"
+                          placeholder="img"
+                          v-model="form.img"
+                        />
+                      </div>
+                    </div>
+                    <!-- <div class="field">
+                      <div class="control">
+                        <input
+                          class="input"
+                          type="text"
                           placeholder="kirilica"
                           v-model="form.kirilica"
                         />
                       </div>
-                    </div>
+                    </div> -->
                     <div class="field">
                       <div class="control">
                         <textarea
