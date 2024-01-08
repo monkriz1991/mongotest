@@ -16,15 +16,31 @@ const { data: post } = useFetch(() => "/api/postitem/", {
     <div class="content">
       <div class="columns">
         <div class="column is-8">
+
+
+
+
+
+
           <div v-for="item in post" :key="item">
             <h1>{{ item.title }}</h1>
           </div>
         </div>
       </div>
+
       <div class="columns">
         <div class="column is-8">
           <div class="post">
             <div v-for="item in post" :key="item">
+
+<clientOnly>
+  <photo-provider>
+    <photo-consumer  :intro="item.img"  :src="item.img">
+      <img :src="item.img" class="view-box">
+    </photo-consumer>
+  </photo-provider>
+</clientOnly>
+
               <div class="post-img">
                 <img :src="item.img" />
               </div>
